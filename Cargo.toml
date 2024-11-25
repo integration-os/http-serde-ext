@@ -1,11 +1,11 @@
 [package]
-name = "http-serde-ext"
-version = "1.0.2"
+name = "http-serde-ext-ios"
+version = "1.0.0"
 authors = ["Andrew Toth"]
 license = "MIT"
-homepage = "https://github.com/andrewtoth/http-serde-ext/"
-repository = "https://github.com/andrewtoth/http-serde-ext/"
-documentation = "https://docs.rs/http-serde-ext/"
+homepage = "https://github.com/integration-os/http-serde-ext-ios"
+repository = "https://github.com/integration-os/http-serde-ext-ios"
+documentation = "https://docs.rs/http-serde-ext-ios/"
 description = "serde support for http crate types Request, Response, Uri, StatusCode, HeaderMap, Method, in Option or other collections"
 keywords = ["http", "serde", "serialization", "deserialize", "url"]
 categories = ["encoding", "network-programming", "web-programming"]
