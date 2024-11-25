@@ -2,19 +2,19 @@
 
 Allows serializing and deserializing the following types from [`http`](https://github.com/hyperium/http):
 
-- [`Response`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/response)
-- [`Request`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/request)
-- [`HeaderMap`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/header_map)
-- [`StatusCode`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/status_code)
-- [`Uri`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/uri)
-- [`Method`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/method)
-- [`HeaderName`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/header_name)
-- [`HeaderValue`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/header_value)
-- [`uri::Authority`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/authority)
-- [`uri::Scheme`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/scheme)
-- [`uri::PathAndQuery`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/path_and_query)
-- [`Version`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/version)
-- Generic [`HeaderMap<T>`](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext/header_map_generic) where the item is not a `HeaderValue`
+- [`Response`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/response)
+- [`Request`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/request)
+- [`HeaderMap`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/header_map)
+- [`StatusCode`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/status_code)
+- [`Uri`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/uri)
+- [`Method`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/method)
+- [`HeaderName`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/header_name)
+- [`HeaderValue`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/header_value)
+- [`uri::Authority`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/authority)
+- [`uri::Scheme`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/scheme)
+- [`uri::PathAndQuery`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/path_and_query)
+- [`Version`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/version)
+- Generic [`HeaderMap<T>`](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios/header_map_generic) where the item is not a `HeaderValue`
 
 Allows serializing and deserializing the above types wrapped in the following `std` container types:
 
@@ -33,20 +33,20 @@ Allows serializing and deserializing the above types wrapped in the following `s
 Run the following Cargo command in your project directory:
 
 ```bash
-cargo add http-serde-ext
+cargo add http-serde-ext-ios
 ```
 
 Or add the following line to your Cargo.toml:
 
 ```toml
-http-serde-ext = "1.0.2"
+http-serde-ext-ios = "1.0.2"
 ```
 
 ### Usage
 
 This library is intended to be used with `serde`'s `derive` feature.
 Fields should use the appropriate `#[serde(with = "...")]` annotation for that
-type. Full examples are provided in each module section of the [docs](https://docs.rs/http-serde-ext/1.0.2/http_serde_ext).
+type. Full examples are provided in each module section of the [docs](https://docs.rs/http-serde-ext-ios/1.0.2/http_serde_ext_ios).
 
 ```rust
 use std::collections::*;
@@ -56,28 +56,28 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize)]
 struct MyStruct {
-    #[serde(with = "http_serde_ext::response")]
+    #[serde(with = "http_serde_ext_ios::response")]
     base: Response<Vec<u8>>,
 
-    #[serde(with = "http_serde_ext::request::option", default)]
+    #[serde(with = "http_serde_ext_ios::request::option", default)]
     option: Option<Request<String>>,
 
-    #[serde(with = "http_serde_ext::method::vec")]
+    #[serde(with = "http_serde_ext_ios::method::vec")]
     vec: Vec<Method>,
 
-    #[serde(with = "http_serde_ext::uri::vec_deque")]
+    #[serde(with = "http_serde_ext_ios::uri::vec_deque")]
     vec_deque: VecDeque<Uri>,
 
-    #[serde(with = "http_serde_ext::header_map::linked_list")]
+    #[serde(with = "http_serde_ext_ios::header_map::linked_list")]
     linked_list: LinkedList<HeaderMap>,
 
-    #[serde(with = "http_serde_ext::header_map_generic::hash_map")]
+    #[serde(with = "http_serde_ext_ios::header_map_generic::hash_map")]
     hash_map: HashMap<String, HeaderMap<String>>,
 
-    #[serde(with = "http_serde_ext::status_code::btree_map_key")]
+    #[serde(with = "http_serde_ext_ios::status_code::btree_map_key")]
     btree_map: BTreeMap<StatusCode, i32>,
 
-    #[serde(with = "http_serde_ext::authority::hash_set")]
+    #[serde(with = "http_serde_ext_ios::authority::hash_set")]
     hash_set: HashSet<uri::Authority>,
 }
 ```
@@ -87,16 +87,16 @@ This library can also be used to manually `De`/`Serialize` types if given a
 
 ```rust
 let uri = http::Uri::default();
-let serialized = http_serde_ext::uri::serialize(&uri, serde_json::value::Serializer).unwrap();
-let deserialized = http_serde_ext::uri::deserialize(serialized).unwrap();
+let serialized = http_serde_ext_ios::uri::serialize(&uri, serde_json::value::Serializer).unwrap();
+let deserialized = http_serde_ext_ios::uri::deserialize(serialized).unwrap();
 assert_eq!(uri, deserialized);
 
 let mut responses: Vec<http::Response<()>> = vec![http::Response::default()];
 let serialized =
-    http_serde_ext::response::vec::serialize(&responses, serde_json::value::Serializer)
+    http_serde_ext_ios::response::vec::serialize(&responses, serde_json::value::Serializer)
         .unwrap();
 let mut deserialized: Vec<http::Response<()>> =
-    http_serde_ext::response::vec::deserialize(serialized).unwrap();
+    http_serde_ext_ios::response::vec::deserialize(serialized).unwrap();
 
 let original = responses.remove(0).into_parts();
 let deserialized = deserialized.remove(0).into_parts();
@@ -109,4 +109,4 @@ assert_eq!(original.1, deserialized.1);
 
 ### Acknowledgements
 
-This crate is heavily inspired by [Kornel's](https://github.com/kornelski) [`http-serde`](https://crates.io/crates/http-serde).
+Forked from [Andrew Toth's](https://github.com/andrewtoth/http-serde-ext) to add patches and fixes as needed.

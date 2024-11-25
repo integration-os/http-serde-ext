@@ -344,7 +344,7 @@ fn test_flattened_option() {
 
     #[derive(Deserialize, Serialize)]
     struct A {
-        #[serde(with = "http_serde_ext::header_map::option")]
+        #[serde(with = "http_serde_ext_ios::header_map::option")]
         field: Option<HeaderMap>,
     }
 
@@ -373,14 +373,14 @@ fn test_authority_roundtrip() {
         Authority::from_static("example.com:8080"),
         json!("example.com:8080"),
         "example.com:8080",
-        "http_serde_ext::authority",
-        "http_serde_ext::authority::option",
-        "http_serde_ext::authority::result",
-        "http_serde_ext::authority::vec",
-        "http_serde_ext::authority::vec_deque",
-        "http_serde_ext::authority::linked_list",
-        "http_serde_ext::authority::hash_map",
-        "http_serde_ext::authority::btree_map"
+        "http_serde_ext_ios::authority",
+        "http_serde_ext_ios::authority::option",
+        "http_serde_ext_ios::authority::result",
+        "http_serde_ext_ios::authority::vec",
+        "http_serde_ext_ios::authority::vec_deque",
+        "http_serde_ext_ios::authority::linked_list",
+        "http_serde_ext_ios::authority::hash_map",
+        "http_serde_ext_ios::authority::btree_map"
     );
 
     test_hash!(
@@ -388,29 +388,29 @@ fn test_authority_roundtrip() {
         Authority::from_static("example.com:8080"),
         json!("example.com:8080"),
         "example.com:8080",
-        "http_serde_ext::authority::hash_map_key",
-        "http_serde_ext::authority::hash_set"
+        "http_serde_ext_ios::authority::hash_map_key",
+        "http_serde_ext_ios::authority::hash_set"
     );
 
     let fake: Authority = Faker.fake();
     test_all_no_intermediate_compare!(
         Authority,
         fake.clone(),
-        "http_serde_ext::authority",
-        "http_serde_ext::authority::option",
-        "http_serde_ext::authority::result",
-        "http_serde_ext::authority::vec",
-        "http_serde_ext::authority::vec_deque",
-        "http_serde_ext::authority::linked_list",
-        "http_serde_ext::authority::hash_map",
-        "http_serde_ext::authority::btree_map"
+        "http_serde_ext_ios::authority",
+        "http_serde_ext_ios::authority::option",
+        "http_serde_ext_ios::authority::result",
+        "http_serde_ext_ios::authority::vec",
+        "http_serde_ext_ios::authority::vec_deque",
+        "http_serde_ext_ios::authority::linked_list",
+        "http_serde_ext_ios::authority::hash_map",
+        "http_serde_ext_ios::authority::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         Authority,
         fake.clone(),
-        "http_serde_ext::authority::hash_map_key",
-        "http_serde_ext::authority::hash_set"
+        "http_serde_ext_ios::authority::hash_map_key",
+        "http_serde_ext_ios::authority::hash_set"
     );
 }
 
@@ -421,14 +421,14 @@ fn test_scheme_roundtrip() {
         Scheme::from_str("https").unwrap(),
         json!("https"),
         "https",
-        "http_serde_ext::scheme",
-        "http_serde_ext::scheme::option",
-        "http_serde_ext::scheme::result",
-        "http_serde_ext::scheme::vec",
-        "http_serde_ext::scheme::vec_deque",
-        "http_serde_ext::scheme::linked_list",
-        "http_serde_ext::scheme::hash_map",
-        "http_serde_ext::scheme::btree_map"
+        "http_serde_ext_ios::scheme",
+        "http_serde_ext_ios::scheme::option",
+        "http_serde_ext_ios::scheme::result",
+        "http_serde_ext_ios::scheme::vec",
+        "http_serde_ext_ios::scheme::vec_deque",
+        "http_serde_ext_ios::scheme::linked_list",
+        "http_serde_ext_ios::scheme::hash_map",
+        "http_serde_ext_ios::scheme::btree_map"
     );
 
     test_hash!(
@@ -436,29 +436,29 @@ fn test_scheme_roundtrip() {
         Scheme::from_str("https").unwrap(),
         json!("https"),
         "https",
-        "http_serde_ext::scheme::hash_map_key",
-        "http_serde_ext::scheme::hash_set"
+        "http_serde_ext_ios::scheme::hash_map_key",
+        "http_serde_ext_ios::scheme::hash_set"
     );
 
     let fake: Scheme = Faker.fake();
     test_all_no_intermediate_compare!(
         Scheme,
         fake.clone(),
-        "http_serde_ext::scheme",
-        "http_serde_ext::scheme::option",
-        "http_serde_ext::scheme::result",
-        "http_serde_ext::scheme::vec",
-        "http_serde_ext::scheme::vec_deque",
-        "http_serde_ext::scheme::linked_list",
-        "http_serde_ext::scheme::hash_map",
-        "http_serde_ext::scheme::btree_map"
+        "http_serde_ext_ios::scheme",
+        "http_serde_ext_ios::scheme::option",
+        "http_serde_ext_ios::scheme::result",
+        "http_serde_ext_ios::scheme::vec",
+        "http_serde_ext_ios::scheme::vec_deque",
+        "http_serde_ext_ios::scheme::linked_list",
+        "http_serde_ext_ios::scheme::hash_map",
+        "http_serde_ext_ios::scheme::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         Scheme,
         fake.clone(),
-        "http_serde_ext::scheme::hash_map_key",
-        "http_serde_ext::scheme::hash_set"
+        "http_serde_ext_ios::scheme::hash_map_key",
+        "http_serde_ext_ios::scheme::hash_set"
     );
 }
 
@@ -469,14 +469,14 @@ fn test_path_and_query_roundtrip() {
         PathAndQuery::from_static("/"),
         json!("/"),
         "/",
-        "http_serde_ext::path_and_query",
-        "http_serde_ext::path_and_query::option",
-        "http_serde_ext::path_and_query::result",
-        "http_serde_ext::path_and_query::vec",
-        "http_serde_ext::path_and_query::vec_deque",
-        "http_serde_ext::path_and_query::linked_list",
-        "http_serde_ext::path_and_query::hash_map",
-        "http_serde_ext::path_and_query::btree_map"
+        "http_serde_ext_ios::path_and_query",
+        "http_serde_ext_ios::path_and_query::option",
+        "http_serde_ext_ios::path_and_query::result",
+        "http_serde_ext_ios::path_and_query::vec",
+        "http_serde_ext_ios::path_and_query::vec_deque",
+        "http_serde_ext_ios::path_and_query::linked_list",
+        "http_serde_ext_ios::path_and_query::hash_map",
+        "http_serde_ext_ios::path_and_query::btree_map"
     );
 
     test_hash!(
@@ -484,29 +484,29 @@ fn test_path_and_query_roundtrip() {
         PathAndQuery::from_static("/"),
         json!("/"),
         "/",
-        "http_serde_ext::path_and_query::hash_map_key",
-        "http_serde_ext::path_and_query::hash_set"
+        "http_serde_ext_ios::path_and_query::hash_map_key",
+        "http_serde_ext_ios::path_and_query::hash_set"
     );
 
     let fake: PathAndQuery = Faker.fake();
     test_all_no_intermediate_compare!(
         PathAndQuery,
         fake.clone(),
-        "http_serde_ext::path_and_query",
-        "http_serde_ext::path_and_query::option",
-        "http_serde_ext::path_and_query::result",
-        "http_serde_ext::path_and_query::vec",
-        "http_serde_ext::path_and_query::vec_deque",
-        "http_serde_ext::path_and_query::linked_list",
-        "http_serde_ext::path_and_query::hash_map",
-        "http_serde_ext::path_and_query::btree_map"
+        "http_serde_ext_ios::path_and_query",
+        "http_serde_ext_ios::path_and_query::option",
+        "http_serde_ext_ios::path_and_query::result",
+        "http_serde_ext_ios::path_and_query::vec",
+        "http_serde_ext_ios::path_and_query::vec_deque",
+        "http_serde_ext_ios::path_and_query::linked_list",
+        "http_serde_ext_ios::path_and_query::hash_map",
+        "http_serde_ext_ios::path_and_query::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         PathAndQuery,
         fake.clone(),
-        "http_serde_ext::path_and_query::hash_map_key",
-        "http_serde_ext::path_and_query::hash_set"
+        "http_serde_ext_ios::path_and_query::hash_map_key",
+        "http_serde_ext_ios::path_and_query::hash_set"
     );
 }
 
@@ -517,14 +517,14 @@ fn test_header_map_roundtrip() {
         HeaderMap::default(),
         json!({}),
         "{}",
-        "http_serde_ext::header_map",
-        "http_serde_ext::header_map::option",
-        "http_serde_ext::header_map::result",
-        "http_serde_ext::header_map::vec",
-        "http_serde_ext::header_map::vec_deque",
-        "http_serde_ext::header_map::linked_list",
-        "http_serde_ext::header_map::hash_map",
-        "http_serde_ext::header_map::btree_map"
+        "http_serde_ext_ios::header_map",
+        "http_serde_ext_ios::header_map::option",
+        "http_serde_ext_ios::header_map::result",
+        "http_serde_ext_ios::header_map::vec",
+        "http_serde_ext_ios::header_map::vec_deque",
+        "http_serde_ext_ios::header_map::linked_list",
+        "http_serde_ext_ios::header_map::hash_map",
+        "http_serde_ext_ios::header_map::btree_map"
     );
 
     let mut map = HeaderMap::new();
@@ -542,28 +542,28 @@ fn test_header_map_roundtrip() {
             "two": ["one", "two"]
         }),
         "baz: qux\nfoo: bar\ntwo:\n- one\n- two",
-        "http_serde_ext::header_map",
-        "http_serde_ext::header_map::option",
-        "http_serde_ext::header_map::result",
-        "http_serde_ext::header_map::vec",
-        "http_serde_ext::header_map::vec_deque",
-        "http_serde_ext::header_map::linked_list",
-        "http_serde_ext::header_map::hash_map",
-        "http_serde_ext::header_map::btree_map"
+        "http_serde_ext_ios::header_map",
+        "http_serde_ext_ios::header_map::option",
+        "http_serde_ext_ios::header_map::result",
+        "http_serde_ext_ios::header_map::vec",
+        "http_serde_ext_ios::header_map::vec_deque",
+        "http_serde_ext_ios::header_map::linked_list",
+        "http_serde_ext_ios::header_map::hash_map",
+        "http_serde_ext_ios::header_map::btree_map"
     );
 
     let fake: HeaderMap = Faker.fake();
     test_all_no_intermediate_compare!(
         HeaderMap,
         fake.clone(),
-        "http_serde_ext::header_map",
-        "http_serde_ext::header_map::option",
-        "http_serde_ext::header_map::result",
-        "http_serde_ext::header_map::vec",
-        "http_serde_ext::header_map::vec_deque",
-        "http_serde_ext::header_map::linked_list",
-        "http_serde_ext::header_map::hash_map",
-        "http_serde_ext::header_map::btree_map"
+        "http_serde_ext_ios::header_map",
+        "http_serde_ext_ios::header_map::option",
+        "http_serde_ext_ios::header_map::result",
+        "http_serde_ext_ios::header_map::vec",
+        "http_serde_ext_ios::header_map::vec_deque",
+        "http_serde_ext_ios::header_map::linked_list",
+        "http_serde_ext_ios::header_map::hash_map",
+        "http_serde_ext_ios::header_map::btree_map"
     );
 }
 
@@ -574,28 +574,28 @@ fn test_header_map_generic_roundtrip() {
         HeaderMap::default(),
         json!({}),
         "{}",
-        "http_serde_ext::header_map_generic",
-        "http_serde_ext::header_map_generic::option",
-        "http_serde_ext::header_map_generic::result",
-        "http_serde_ext::header_map_generic::vec",
-        "http_serde_ext::header_map_generic::vec_deque",
-        "http_serde_ext::header_map_generic::linked_list",
-        "http_serde_ext::header_map_generic::hash_map",
-        "http_serde_ext::header_map_generic::btree_map"
+        "http_serde_ext_ios::header_map_generic",
+        "http_serde_ext_ios::header_map_generic::option",
+        "http_serde_ext_ios::header_map_generic::result",
+        "http_serde_ext_ios::header_map_generic::vec",
+        "http_serde_ext_ios::header_map_generic::vec_deque",
+        "http_serde_ext_ios::header_map_generic::linked_list",
+        "http_serde_ext_ios::header_map_generic::hash_map",
+        "http_serde_ext_ios::header_map_generic::btree_map"
     );
 
     let fake: HeaderMap<String> = Faker.fake();
     test_all_no_intermediate_compare!(
         HeaderMap<String>,
         fake.clone(),
-        "http_serde_ext::header_map_generic",
-        "http_serde_ext::header_map_generic::option",
-        "http_serde_ext::header_map_generic::result",
-        "http_serde_ext::header_map_generic::vec",
-        "http_serde_ext::header_map_generic::vec_deque",
-        "http_serde_ext::header_map_generic::linked_list",
-        "http_serde_ext::header_map_generic::hash_map",
-        "http_serde_ext::header_map_generic::btree_map"
+        "http_serde_ext_ios::header_map_generic",
+        "http_serde_ext_ios::header_map_generic::option",
+        "http_serde_ext_ios::header_map_generic::result",
+        "http_serde_ext_ios::header_map_generic::vec",
+        "http_serde_ext_ios::header_map_generic::vec_deque",
+        "http_serde_ext_ios::header_map_generic::linked_list",
+        "http_serde_ext_ios::header_map_generic::hash_map",
+        "http_serde_ext_ios::header_map_generic::btree_map"
     );
 }
 
@@ -606,14 +606,14 @@ fn test_header_name_roundtrip() {
         HeaderName::from_static("foo"),
         json!("foo"),
         "foo",
-        "http_serde_ext::header_name",
-        "http_serde_ext::header_name::option",
-        "http_serde_ext::header_name::result",
-        "http_serde_ext::header_name::vec",
-        "http_serde_ext::header_name::vec_deque",
-        "http_serde_ext::header_name::linked_list",
-        "http_serde_ext::header_name::hash_map",
-        "http_serde_ext::header_name::btree_map"
+        "http_serde_ext_ios::header_name",
+        "http_serde_ext_ios::header_name::option",
+        "http_serde_ext_ios::header_name::result",
+        "http_serde_ext_ios::header_name::vec",
+        "http_serde_ext_ios::header_name::vec_deque",
+        "http_serde_ext_ios::header_name::linked_list",
+        "http_serde_ext_ios::header_name::hash_map",
+        "http_serde_ext_ios::header_name::btree_map"
     );
 
     test_hash!(
@@ -621,29 +621,29 @@ fn test_header_name_roundtrip() {
         HeaderName::from_static("foo"),
         json!("foo"),
         "foo",
-        "http_serde_ext::header_name::hash_map_key",
-        "http_serde_ext::header_name::hash_set"
+        "http_serde_ext_ios::header_name::hash_map_key",
+        "http_serde_ext_ios::header_name::hash_set"
     );
 
     let fake: HeaderName = Faker.fake();
     test_all_no_intermediate_compare!(
         HeaderName,
         fake.clone(),
-        "http_serde_ext::header_name",
-        "http_serde_ext::header_name::option",
-        "http_serde_ext::header_name::result",
-        "http_serde_ext::header_name::vec",
-        "http_serde_ext::header_name::vec_deque",
-        "http_serde_ext::header_name::linked_list",
-        "http_serde_ext::header_name::hash_map",
-        "http_serde_ext::header_name::btree_map"
+        "http_serde_ext_ios::header_name",
+        "http_serde_ext_ios::header_name::option",
+        "http_serde_ext_ios::header_name::result",
+        "http_serde_ext_ios::header_name::vec",
+        "http_serde_ext_ios::header_name::vec_deque",
+        "http_serde_ext_ios::header_name::linked_list",
+        "http_serde_ext_ios::header_name::hash_map",
+        "http_serde_ext_ios::header_name::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         HeaderName,
         fake.clone(),
-        "http_serde_ext::header_name::hash_map_key",
-        "http_serde_ext::header_name::hash_set"
+        "http_serde_ext_ios::header_name::hash_map_key",
+        "http_serde_ext_ios::header_name::hash_set"
     );
 }
 
@@ -654,14 +654,14 @@ fn test_header_value_roundtrip() {
         HeaderValue::from_static("foo"),
         json!("foo"),
         "foo",
-        "http_serde_ext::header_value",
-        "http_serde_ext::header_value::option",
-        "http_serde_ext::header_value::result",
-        "http_serde_ext::header_value::vec",
-        "http_serde_ext::header_value::vec_deque",
-        "http_serde_ext::header_value::linked_list",
-        "http_serde_ext::header_value::hash_map",
-        "http_serde_ext::header_value::btree_map"
+        "http_serde_ext_ios::header_value",
+        "http_serde_ext_ios::header_value::option",
+        "http_serde_ext_ios::header_value::result",
+        "http_serde_ext_ios::header_value::vec",
+        "http_serde_ext_ios::header_value::vec_deque",
+        "http_serde_ext_ios::header_value::linked_list",
+        "http_serde_ext_ios::header_value::hash_map",
+        "http_serde_ext_ios::header_value::btree_map"
     );
 
     test_hash!(
@@ -669,8 +669,8 @@ fn test_header_value_roundtrip() {
         HeaderValue::from_static("foo"),
         json!("foo"),
         "foo",
-        "http_serde_ext::header_value::hash_map_key",
-        "http_serde_ext::header_value::hash_set"
+        "http_serde_ext_ios::header_value::hash_map_key",
+        "http_serde_ext_ios::header_value::hash_set"
     );
 
     test_ord!(
@@ -678,36 +678,36 @@ fn test_header_value_roundtrip() {
         HeaderValue::from_static("foo"),
         json!("foo"),
         "foo",
-        "http_serde_ext::header_value::btree_map_key",
-        "http_serde_ext::header_value::btree_set"
+        "http_serde_ext_ios::header_value::btree_map_key",
+        "http_serde_ext_ios::header_value::btree_set"
     );
 
     let fake: HeaderValue = Faker.fake();
     test_all_no_intermediate_compare!(
         HeaderValue,
         fake.clone(),
-        "http_serde_ext::header_value",
-        "http_serde_ext::header_value::option",
-        "http_serde_ext::header_value::result",
-        "http_serde_ext::header_value::vec",
-        "http_serde_ext::header_value::vec_deque",
-        "http_serde_ext::header_value::linked_list",
-        "http_serde_ext::header_value::hash_map",
-        "http_serde_ext::header_value::btree_map"
+        "http_serde_ext_ios::header_value",
+        "http_serde_ext_ios::header_value::option",
+        "http_serde_ext_ios::header_value::result",
+        "http_serde_ext_ios::header_value::vec",
+        "http_serde_ext_ios::header_value::vec_deque",
+        "http_serde_ext_ios::header_value::linked_list",
+        "http_serde_ext_ios::header_value::hash_map",
+        "http_serde_ext_ios::header_value::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         HeaderValue,
         fake.clone(),
-        "http_serde_ext::header_value::hash_map_key",
-        "http_serde_ext::header_value::hash_set"
+        "http_serde_ext_ios::header_value::hash_map_key",
+        "http_serde_ext_ios::header_value::hash_set"
     );
 
     test_ord_no_intermediate_compare!(
         HeaderValue,
         fake.clone(),
-        "http_serde_ext::header_value::btree_map_key",
-        "http_serde_ext::header_value::btree_set"
+        "http_serde_ext_ios::header_value::btree_map_key",
+        "http_serde_ext_ios::header_value::btree_set"
     );
 }
 
@@ -718,14 +718,14 @@ fn test_method_roundtrip() {
         Method::default(),
         json!("GET"),
         "GET",
-        "http_serde_ext::method",
-        "http_serde_ext::method::option",
-        "http_serde_ext::method::result",
-        "http_serde_ext::method::vec",
-        "http_serde_ext::method::vec_deque",
-        "http_serde_ext::method::linked_list",
-        "http_serde_ext::method::hash_map",
-        "http_serde_ext::method::btree_map"
+        "http_serde_ext_ios::method",
+        "http_serde_ext_ios::method::option",
+        "http_serde_ext_ios::method::result",
+        "http_serde_ext_ios::method::vec",
+        "http_serde_ext_ios::method::vec_deque",
+        "http_serde_ext_ios::method::linked_list",
+        "http_serde_ext_ios::method::hash_map",
+        "http_serde_ext_ios::method::btree_map"
     );
 
     test_hash!(
@@ -733,29 +733,29 @@ fn test_method_roundtrip() {
         Method::default(),
         json!("GET"),
         "GET",
-        "http_serde_ext::method::hash_map_key",
-        "http_serde_ext::method::hash_set"
+        "http_serde_ext_ios::method::hash_map_key",
+        "http_serde_ext_ios::method::hash_set"
     );
 
     let fake: Method = Faker.fake();
     test_all_no_intermediate_compare!(
         Method,
         fake.clone(),
-        "http_serde_ext::method",
-        "http_serde_ext::method::option",
-        "http_serde_ext::method::result",
-        "http_serde_ext::method::vec",
-        "http_serde_ext::method::vec_deque",
-        "http_serde_ext::method::linked_list",
-        "http_serde_ext::method::hash_map",
-        "http_serde_ext::method::btree_map"
+        "http_serde_ext_ios::method",
+        "http_serde_ext_ios::method::option",
+        "http_serde_ext_ios::method::result",
+        "http_serde_ext_ios::method::vec",
+        "http_serde_ext_ios::method::vec_deque",
+        "http_serde_ext_ios::method::linked_list",
+        "http_serde_ext_ios::method::hash_map",
+        "http_serde_ext_ios::method::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         Method,
         fake.clone(),
-        "http_serde_ext::method::hash_map_key",
-        "http_serde_ext::method::hash_set"
+        "http_serde_ext_ios::method::hash_map_key",
+        "http_serde_ext_ios::method::hash_set"
     );
 }
 
@@ -965,14 +965,14 @@ fn test_response_roundtrip() {
         }),
         "head:\n  status: 200\n  headers: {}\n  version: HTTP/1.1\nbody: null",
         equate,
-        "http_serde_ext::response",
-        "http_serde_ext::response::option",
-        "http_serde_ext::response::result",
-        "http_serde_ext::response::vec",
-        "http_serde_ext::response::vec_deque",
-        "http_serde_ext::response::linked_list",
-        "http_serde_ext::response::hash_map",
-        "http_serde_ext::response::btree_map"
+        "http_serde_ext_ios::response",
+        "http_serde_ext_ios::response::option",
+        "http_serde_ext_ios::response::result",
+        "http_serde_ext_ios::response::vec",
+        "http_serde_ext_ios::response::vec_deque",
+        "http_serde_ext_ios::response::linked_list",
+        "http_serde_ext_ios::response::hash_map",
+        "http_serde_ext_ios::response::btree_map"
     );
 
     let response: Response<String> = Faker.fake();
@@ -981,14 +981,14 @@ fn test_response_roundtrip() {
         Response<String>,
         response.clone(),
         equate,
-        "http_serde_ext::response",
-        "http_serde_ext::response::option",
-        "http_serde_ext::response::result",
-        "http_serde_ext::response::vec",
-        "http_serde_ext::response::vec_deque",
-        "http_serde_ext::response::linked_list",
-        "http_serde_ext::response::hash_map",
-        "http_serde_ext::response::btree_map"
+        "http_serde_ext_ios::response",
+        "http_serde_ext_ios::response::option",
+        "http_serde_ext_ios::response::result",
+        "http_serde_ext_ios::response::vec",
+        "http_serde_ext_ios::response::vec_deque",
+        "http_serde_ext_ios::response::linked_list",
+        "http_serde_ext_ios::response::hash_map",
+        "http_serde_ext_ios::response::btree_map"
     );
 }
 
@@ -1018,14 +1018,14 @@ fn test_request_roundtrip() {
         }),
         "head:\n  method: GET\n  uri: /\n  headers: {}\n  version: HTTP/1.1\nbody: null",
         equate,
-        "http_serde_ext::request",
-        "http_serde_ext::request::option",
-        "http_serde_ext::request::result",
-        "http_serde_ext::request::vec",
-        "http_serde_ext::request::vec_deque",
-        "http_serde_ext::request::linked_list",
-        "http_serde_ext::request::hash_map",
-        "http_serde_ext::request::btree_map"
+        "http_serde_ext_ios::request",
+        "http_serde_ext_ios::request::option",
+        "http_serde_ext_ios::request::result",
+        "http_serde_ext_ios::request::vec",
+        "http_serde_ext_ios::request::vec_deque",
+        "http_serde_ext_ios::request::linked_list",
+        "http_serde_ext_ios::request::hash_map",
+        "http_serde_ext_ios::request::btree_map"
     );
 
     let request: Request<String> = Faker.fake();
@@ -1034,14 +1034,14 @@ fn test_request_roundtrip() {
         Request<String>,
         request.clone(),
         equate,
-        "http_serde_ext::request",
-        "http_serde_ext::request::option",
-        "http_serde_ext::request::result",
-        "http_serde_ext::request::vec",
-        "http_serde_ext::request::vec_deque",
-        "http_serde_ext::request::linked_list",
-        "http_serde_ext::request::hash_map",
-        "http_serde_ext::request::btree_map"
+        "http_serde_ext_ios::request",
+        "http_serde_ext_ios::request::option",
+        "http_serde_ext_ios::request::result",
+        "http_serde_ext_ios::request::vec",
+        "http_serde_ext_ios::request::vec_deque",
+        "http_serde_ext_ios::request::linked_list",
+        "http_serde_ext_ios::request::hash_map",
+        "http_serde_ext_ios::request::btree_map"
     );
 }
 
@@ -1052,14 +1052,14 @@ fn test_status_code_roundtrip() {
         StatusCode::default(),
         json!(200),
         "200",
-        "http_serde_ext::status_code",
-        "http_serde_ext::status_code::option",
-        "http_serde_ext::status_code::result",
-        "http_serde_ext::status_code::vec",
-        "http_serde_ext::status_code::vec_deque",
-        "http_serde_ext::status_code::linked_list",
-        "http_serde_ext::status_code::hash_map",
-        "http_serde_ext::status_code::btree_map"
+        "http_serde_ext_ios::status_code",
+        "http_serde_ext_ios::status_code::option",
+        "http_serde_ext_ios::status_code::result",
+        "http_serde_ext_ios::status_code::vec",
+        "http_serde_ext_ios::status_code::vec_deque",
+        "http_serde_ext_ios::status_code::linked_list",
+        "http_serde_ext_ios::status_code::hash_map",
+        "http_serde_ext_ios::status_code::btree_map"
     );
 
     test_all!(
@@ -1067,42 +1067,42 @@ fn test_status_code_roundtrip() {
         StatusCode::NOT_MODIFIED,
         json!(304),
         "304",
-        "http_serde_ext::status_code",
-        "http_serde_ext::status_code::option",
-        "http_serde_ext::status_code::result",
-        "http_serde_ext::status_code::vec",
-        "http_serde_ext::status_code::vec_deque",
-        "http_serde_ext::status_code::linked_list",
-        "http_serde_ext::status_code::hash_map",
-        "http_serde_ext::status_code::btree_map"
+        "http_serde_ext_ios::status_code",
+        "http_serde_ext_ios::status_code::option",
+        "http_serde_ext_ios::status_code::result",
+        "http_serde_ext_ios::status_code::vec",
+        "http_serde_ext_ios::status_code::vec_deque",
+        "http_serde_ext_ios::status_code::linked_list",
+        "http_serde_ext_ios::status_code::hash_map",
+        "http_serde_ext_ios::status_code::btree_map"
     );
 
     let fake: StatusCode = Faker.fake();
     test_all_no_intermediate_compare!(
         StatusCode,
         fake,
-        "http_serde_ext::status_code",
-        "http_serde_ext::status_code::option",
-        "http_serde_ext::status_code::result",
-        "http_serde_ext::status_code::vec",
-        "http_serde_ext::status_code::vec_deque",
-        "http_serde_ext::status_code::linked_list",
-        "http_serde_ext::status_code::hash_map",
-        "http_serde_ext::status_code::btree_map"
+        "http_serde_ext_ios::status_code",
+        "http_serde_ext_ios::status_code::option",
+        "http_serde_ext_ios::status_code::result",
+        "http_serde_ext_ios::status_code::vec",
+        "http_serde_ext_ios::status_code::vec_deque",
+        "http_serde_ext_ios::status_code::linked_list",
+        "http_serde_ext_ios::status_code::hash_map",
+        "http_serde_ext_ios::status_code::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         StatusCode,
         fake,
-        "http_serde_ext::status_code::hash_map_key",
-        "http_serde_ext::status_code::hash_set"
+        "http_serde_ext_ios::status_code::hash_map_key",
+        "http_serde_ext_ios::status_code::hash_set"
     );
 
     test_ord_no_intermediate_compare!(
         StatusCode,
         fake,
-        "http_serde_ext::status_code::btree_map_key",
-        "http_serde_ext::status_code::btree_set"
+        "http_serde_ext_ios::status_code::btree_map_key",
+        "http_serde_ext_ios::status_code::btree_set"
     );
 }
 
@@ -1113,14 +1113,14 @@ fn test_uri_roundtrip() {
         Uri::default(),
         json!("/"),
         "/",
-        "http_serde_ext::uri",
-        "http_serde_ext::uri::option",
-        "http_serde_ext::uri::result",
-        "http_serde_ext::uri::vec",
-        "http_serde_ext::uri::vec_deque",
-        "http_serde_ext::uri::linked_list",
-        "http_serde_ext::uri::hash_map",
-        "http_serde_ext::uri::btree_map"
+        "http_serde_ext_ios::uri",
+        "http_serde_ext_ios::uri::option",
+        "http_serde_ext_ios::uri::result",
+        "http_serde_ext_ios::uri::vec",
+        "http_serde_ext_ios::uri::vec_deque",
+        "http_serde_ext_ios::uri::linked_list",
+        "http_serde_ext_ios::uri::hash_map",
+        "http_serde_ext_ios::uri::btree_map"
     );
 
     test_all!(
@@ -1128,14 +1128,14 @@ fn test_uri_roundtrip() {
         Uri::try_from("https://example.com").unwrap(),
         json!("https://example.com/"),
         "https://example.com/",
-        "http_serde_ext::uri",
-        "http_serde_ext::uri::option",
-        "http_serde_ext::uri::result",
-        "http_serde_ext::uri::vec",
-        "http_serde_ext::uri::vec_deque",
-        "http_serde_ext::uri::linked_list",
-        "http_serde_ext::uri::hash_map",
-        "http_serde_ext::uri::btree_map"
+        "http_serde_ext_ios::uri",
+        "http_serde_ext_ios::uri::option",
+        "http_serde_ext_ios::uri::result",
+        "http_serde_ext_ios::uri::vec",
+        "http_serde_ext_ios::uri::vec_deque",
+        "http_serde_ext_ios::uri::linked_list",
+        "http_serde_ext_ios::uri::hash_map",
+        "http_serde_ext_ios::uri::btree_map"
     );
 
     test_hash!(
@@ -1143,29 +1143,29 @@ fn test_uri_roundtrip() {
         Uri::try_from("https://example.com").unwrap(),
         json!("https://example.com/"),
         "https://example.com/",
-        "http_serde_ext::uri::hash_map_key",
-        "http_serde_ext::uri::hash_set"
+        "http_serde_ext_ios::uri::hash_map_key",
+        "http_serde_ext_ios::uri::hash_set"
     );
 
     let fake: Uri = Faker.fake();
     test_all_no_intermediate_compare!(
         Uri,
         fake.clone(),
-        "http_serde_ext::uri",
-        "http_serde_ext::uri::option",
-        "http_serde_ext::uri::result",
-        "http_serde_ext::uri::vec",
-        "http_serde_ext::uri::vec_deque",
-        "http_serde_ext::uri::linked_list",
-        "http_serde_ext::uri::hash_map",
-        "http_serde_ext::uri::btree_map"
+        "http_serde_ext_ios::uri",
+        "http_serde_ext_ios::uri::option",
+        "http_serde_ext_ios::uri::result",
+        "http_serde_ext_ios::uri::vec",
+        "http_serde_ext_ios::uri::vec_deque",
+        "http_serde_ext_ios::uri::linked_list",
+        "http_serde_ext_ios::uri::hash_map",
+        "http_serde_ext_ios::uri::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         Uri,
         fake.clone(),
-        "http_serde_ext::uri::hash_map_key",
-        "http_serde_ext::uri::hash_set"
+        "http_serde_ext_ios::uri::hash_map_key",
+        "http_serde_ext_ios::uri::hash_set"
     );
 }
 
@@ -1176,14 +1176,14 @@ fn test_version_roundtrip() {
         Version::default(),
         json!("HTTP/1.1"),
         "HTTP/1.1",
-        "http_serde_ext::version",
-        "http_serde_ext::version::option",
-        "http_serde_ext::version::result",
-        "http_serde_ext::version::vec",
-        "http_serde_ext::version::vec_deque",
-        "http_serde_ext::version::linked_list",
-        "http_serde_ext::version::hash_map",
-        "http_serde_ext::version::btree_map"
+        "http_serde_ext_ios::version",
+        "http_serde_ext_ios::version::option",
+        "http_serde_ext_ios::version::result",
+        "http_serde_ext_ios::version::vec",
+        "http_serde_ext_ios::version::vec_deque",
+        "http_serde_ext_ios::version::linked_list",
+        "http_serde_ext_ios::version::hash_map",
+        "http_serde_ext_ios::version::btree_map"
     );
 
     test_hash!(
@@ -1191,8 +1191,8 @@ fn test_version_roundtrip() {
         Version::default(),
         json!("HTTP/1.1"),
         "HTTP/1.1",
-        "http_serde_ext::version::hash_map_key",
-        "http_serde_ext::version::hash_set"
+        "http_serde_ext_ios::version::hash_map_key",
+        "http_serde_ext_ios::version::hash_set"
     );
 
     test_ord!(
@@ -1200,36 +1200,36 @@ fn test_version_roundtrip() {
         Version::default(),
         json!("HTTP/1.1"),
         "HTTP/1.1",
-        "http_serde_ext::version::btree_map_key",
-        "http_serde_ext::version::btree_set"
+        "http_serde_ext_ios::version::btree_map_key",
+        "http_serde_ext_ios::version::btree_set"
     );
 
     let fake: Version = Faker.fake();
     test_all_no_intermediate_compare!(
         Version,
         fake,
-        "http_serde_ext::version",
-        "http_serde_ext::version::option",
-        "http_serde_ext::version::result",
-        "http_serde_ext::version::vec",
-        "http_serde_ext::version::vec_deque",
-        "http_serde_ext::version::linked_list",
-        "http_serde_ext::version::hash_map",
-        "http_serde_ext::version::btree_map"
+        "http_serde_ext_ios::version",
+        "http_serde_ext_ios::version::option",
+        "http_serde_ext_ios::version::result",
+        "http_serde_ext_ios::version::vec",
+        "http_serde_ext_ios::version::vec_deque",
+        "http_serde_ext_ios::version::linked_list",
+        "http_serde_ext_ios::version::hash_map",
+        "http_serde_ext_ios::version::btree_map"
     );
 
     test_hash_no_intermediate_compare!(
         Version,
         fake,
-        "http_serde_ext::version::hash_map_key",
-        "http_serde_ext::version::hash_set"
+        "http_serde_ext_ios::version::hash_map_key",
+        "http_serde_ext_ios::version::hash_set"
     );
 
     test_ord_no_intermediate_compare!(
         Version,
         fake,
-        "http_serde_ext::version::btree_map_key",
-        "http_serde_ext::version::btree_set"
+        "http_serde_ext_ios::version::btree_map_key",
+        "http_serde_ext_ios::version::btree_set"
     );
 }
 
@@ -1264,7 +1264,7 @@ fn test_invalid() {
     invalid_deserialize!(
         Authority,
         json!("\\"),
-        "http_serde_ext::authority",
+        "http_serde_ext_ios::authority",
         "invalid uri character"
     );
 
@@ -1272,69 +1272,69 @@ fn test_invalid() {
     invalid_deserialize!(
         HeaderMap<String>,
         json!({invalid_str: "hello"}),
-        "http_serde_ext::header_map_generic",
+        "http_serde_ext_ios::header_map_generic",
         "invalid HTTP header name"
     );
     invalid_deserialize!(
         HeaderMap,
         json!(""),
-        "http_serde_ext::header_map",
+        "http_serde_ext_ios::header_map",
         "invalid type: string \"\", expected a header map"
     );
     invalid_deserialize!(
         HeaderMap,
         json!({"empty_key": []}),
-        "http_serde_ext::header_map",
+        "http_serde_ext_ios::header_map",
         "no value for header empty_key"
     );
 
     invalid_deserialize!(
         HeaderName,
         json!(invalid_str),
-        "http_serde_ext::header_name",
+        "http_serde_ext_ios::header_name",
         "invalid HTTP header name"
     );
     invalid_deserialize!(
         HeaderValue,
         json!(invalid_str),
-        "http_serde_ext::header_value",
+        "http_serde_ext_ios::header_value",
         "failed to parse header value"
     );
 
     invalid_deserialize!(
         Response<()>,
         json!({}),
-        "http_serde_ext::response",
+        "http_serde_ext_ios::response",
         "missing field `head`"
     );
     invalid_deserialize!(
         Request<()>,
         json!({"head": {}}),
-        "http_serde_ext::request",
+        "http_serde_ext_ios::request",
         "missing field `method`"
     );
     serde_json_res_req_invalid!(
         Response::<()>,
-        "http_serde_ext::response",
+        "http_serde_ext_ios::response",
         "extensions is not empty"
     );
     serde_json_res_req_invalid!(
         Request::<()>,
-        "http_serde_ext::request",
+        "http_serde_ext_ios::request",
         "extensions is not empty"
     );
 
     invalid_deserialize!(
         StatusCode,
         json!(1000),
-        "http_serde_ext::status_code",
+        "http_serde_ext_ios::status_code",
         "invalid status code"
     );
-    invalid_deserialize!(Uri, json!(""), "http_serde_ext::uri", "empty string");
+    invalid_deserialize!(Uri, json!(""), "http_serde_ext_ios::uri", "empty string");
     invalid_deserialize!(
         Version,
         json!("HTTP/0.0"),
-        "http_serde_ext::version",
+        "http_serde_ext_ios::version",
         "invalid value: string \"HTTP/0.0\", expected a version string"
     );
 }

@@ -39,28 +39,28 @@
 //!
 //! #[derive(Serialize, Deserialize)]
 //! struct MyStruct {
-//!    #[serde(with = "http_serde_ext::response")]
+//!    #[serde(with = "http_serde_ext_ios::response")]
 //!    base: Response<Vec<u8>>,
 //!
-//!    #[serde(with = "http_serde_ext::request::option", default)]
+//!    #[serde(with = "http_serde_ext_ios::request::option", default)]
 //!    option: Option<Request<String>>,
 //!
-//!    #[serde(with = "http_serde_ext::method::vec")]
+//!    #[serde(with = "http_serde_ext_ios::method::vec")]
 //!    vec: Vec<Method>,
 //!
-//!    #[serde(with = "http_serde_ext::uri::vec_deque")]
+//!    #[serde(with = "http_serde_ext_ios::uri::vec_deque")]
 //!    vec_deque: VecDeque<Uri>,
 //!
-//!    #[serde(with = "http_serde_ext::header_map::linked_list")]
+//!    #[serde(with = "http_serde_ext_ios::header_map::linked_list")]
 //!    linked_list: LinkedList<HeaderMap>,
 //!
-//!    #[serde(with = "http_serde_ext::header_map_generic::hash_map")]
+//!    #[serde(with = "http_serde_ext_ios::header_map_generic::hash_map")]
 //!    hash_map: HashMap<String, HeaderMap<String>>,
 //!
-//!    #[serde(with = "http_serde_ext::status_code::btree_map_key")]
+//!    #[serde(with = "http_serde_ext_ios::status_code::btree_map_key")]
 //!    btree_map_key: BTreeMap<StatusCode, i32>,
 //!
-//!    #[serde(with = "http_serde_ext::authority::hash_set")]
+//!    #[serde(with = "http_serde_ext_ios::authority::hash_set")]
 //!    hash_set: HashSet<uri::Authority>,
 //! }
 //! ```
@@ -70,16 +70,16 @@
 //!
 //! ```rust
 //! let uri = http::Uri::default();
-//! let serialized = http_serde_ext::uri::serialize(&uri, serde_json::value::Serializer).unwrap();
-//! let deserialized = http_serde_ext::uri::deserialize(serialized).unwrap();
+//! let serialized = http_serde_ext_ios::uri::serialize(&uri, serde_json::value::Serializer).unwrap();
+//! let deserialized = http_serde_ext_ios::uri::deserialize(serialized).unwrap();
 //! assert_eq!(uri, deserialized);
 //!
 //! let responses: Vec<http::Response<()>> = vec![http::Response::default()];
 //! let serialized =
-//!     http_serde_ext::response::vec::serialize(&responses, serde_json::value::Serializer)
+//!     http_serde_ext_ios::response::vec::serialize(&responses, serde_json::value::Serializer)
 //!         .unwrap();
 //! let deserialized: Vec<http::Response<()>> =
-//!     http_serde_ext::response::vec::deserialize(serialized).unwrap();
+//!     http_serde_ext_ios::response::vec::deserialize(serialized).unwrap();
 //! ```
 
 #[macro_use]
@@ -89,6 +89,7 @@ mod macros;
 struct BorrowedNameWrapper<'a>(#[serde(with = "crate::header_name")] &'a http::HeaderName);
 
 #[derive(serde::Deserialize)]
+#[serde(transparent)]
 struct NameWrapper(#[serde(with = "crate::header_name")] http::HeaderName);
 
 #[derive(serde::Deserialize)]
@@ -141,28 +142,28 @@ macro_rules! doc_mod {
         ///     T: Serialize + for<'a> Deserialize<'a> + Hash + Ord,
         $(#[doc = concat!("    ", stringify!($generic), ": Serialize + for<'a> Deserialize<'a>,") ])?
         /// {
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "\")]")]
         #[doc = concat!("    base: ", stringify!($ty), $("<", stringify!($generic), ">",)? ",")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::option\", default)]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::option\", default)]")]
         #[doc = concat!("    option: Option<", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::result\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::result\")]")]
         #[doc = concat!("    result: Result<", stringify!($ty), $("<", stringify!($generic), ">",)? ", T>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec\")]")]
         #[doc = concat!("    vec: Vec<", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec_deque\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec_deque\")]")]
         #[doc = concat!("    vec_deque: VecDeque<", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::linked_list\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::linked_list\")]")]
         #[doc = concat!("    linked_list: LinkedList<", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_map\")]")]
         #[doc = concat!("    hash_map: HashMap<T, ", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::btree_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::btree_map\")]")]
         #[doc = concat!("    btree_map: BTreeMap<T, ", stringify!($ty), $("<", stringify!($generic), ">",)? ">,")]
         /// }
         /// ```
@@ -186,34 +187,34 @@ macro_rules! doc_mod_hash {
         ///     U: Serialize + for<'a> Deserialize<'a>,
         ///     T: Serialize + for<'a> Deserialize<'a> + Hash + Ord,
         /// {
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "\")]")]
         #[doc = concat!("    base: ", stringify!($ty), ",")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::option\", default)]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::option\", default)]")]
         #[doc = concat!("    option: Option<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::result\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::result\")]")]
         #[doc = concat!("    result: Result<", stringify!($ty), ", U>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec\")]")]
         #[doc = concat!("    vec: Vec<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec_deque\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec_deque\")]")]
         #[doc = concat!("    vec_deque: VecDeque<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::linked_list\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::linked_list\")]")]
         #[doc = concat!("    linked_list: LinkedList<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_map\")]")]
         #[doc = concat!("    hash_map: HashMap<T, ", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_map_key\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_map_key\")]")]
         #[doc = concat!("    hash_map_key: HashMap<", stringify!($ty), ", U>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::btree_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::btree_map\")]")]
         #[doc = concat!("    btree_map: BTreeMap<T, ", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_set\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_set\")]")]
         #[doc = concat!("    hash_set: HashSet<", stringify!($ty), ">,")]
         /// }
         /// ```
@@ -237,40 +238,40 @@ macro_rules! doc_mod_ord_and_hash {
         ///     U: Serialize + for<'a> Deserialize<'a>,
         ///     T: Serialize + for<'a> Deserialize<'a> + Hash + Ord,
         /// {
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "\")]")]
         #[doc = concat!("    base: ", stringify!($ty), ",")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::option\", default)]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::option\", default)]")]
         #[doc = concat!("    option: Option<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::result\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::result\")]")]
         #[doc = concat!("    result: Result<", stringify!($ty), ", U>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec\")]")]
         #[doc = concat!("    vec: Vec<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::vec_deque\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::vec_deque\")]")]
         #[doc = concat!("    vec_deque: VecDeque<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::linked_list\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::linked_list\")]")]
         #[doc = concat!("    linked_list: LinkedList<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_map\")]")]
         #[doc = concat!("    hash_map: HashMap<T, ", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_map_key\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_map_key\")]")]
         #[doc = concat!("    hash_map_key: HashMap<", stringify!($ty), ", U>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::btree_map\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::btree_map\")]")]
         #[doc = concat!("    btree_map: BTreeMap<T, ", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::btree_map_key\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::btree_map_key\")]")]
         #[doc = concat!("    btree_map_key: BTreeMap<", stringify!($ty), ", U>,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::hash_set\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::hash_set\")]")]
         #[doc = concat!("    hash_set: HashSet<", stringify!($ty), ">,")]
         ///
-        #[doc = concat!("    #[serde(with = \"http_serde_ext::", stringify!($path), "::btree_set\")]")]
+        #[doc = concat!("    #[serde(with = \"http_serde_ext_ios::", stringify!($path), "::btree_set\")]")]
         #[doc = concat!("    btree_set: BTreeSet<", stringify!($ty), ">,")]
         /// }
         /// ```
